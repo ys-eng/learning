@@ -10,23 +10,28 @@
   456  --version
   バージョン確認
 
-  641  git config --global color.ui true
-  642  git config -l
+  642  git config --list
+  gitの設定内容の確認
+
   643  git config --help 
   650  git config --global core.editor 'vim -c "set fenc=utf-8"'
+
+  641  git config --global color.ui true
+  git利用時のコマンドラインの色の設定
+
   651  git config --global color.diff auto\ngit config --global color.status auto\n
+  git利用時のコマンドラインの色の設定
+
   653  git config --global color.branch auto
+  git利用時のコマンドラインの色の設定
+
   654  #git config --global push.default simple\ngit config --global core.precomposeunicode true\ngit config --global core.quotepath false
   672  git@github.com:yamamoto6/product.git
   680  git --list
   658  git config --global core.quotepath false
   656  user.name=shunsuke yamamoto\nuser.email=shanbenjunjie@gmail.com
-  662  defaults write com.apple.Finder QuitMenuItem -bool no
-  664  defaults write com.apple.finder QuitMenuItem -bool YES
   683  sh init.sh
   690  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  715  homebrew
-  716  homebrew --version 
   714  brew --repo homebrew / core
 
   730  brew help
@@ -45,24 +50,18 @@
   インストール済みのパッケージの一覧を表示
 
   736  /usr/local/Cellar/foo/0.1
-  739  defaults write com.apple.finder QuitMenuItem -bool NO
-  740  Killall Finder
-  741  s
   747  echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshenv
   748  echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshenva
-  750  git -version
   752  source ~/.zshenv
   765  git -C $（brew --repository homebrew / core）
   766  git -C $（brew --repository homebrew / core）reset --hardHEAD
   768  git -C $（brew --repository homebrew / core）checkout master
   769  git -C $（brew --repository homebrew / core）checkoutmaster
   770  cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
-  772  -1
   776  git clone gh repo clone yamamoto6/product
   783  git config --global user.email "shanbenjunjie@gmail.com"
   785  git config --global user.name "shunsuke yamamoto"
   787  git init\nInitialized empty Git repository in 作業ディレクトリ/.git
-  811  git config --list
   817  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   823  mkdir program
@@ -130,20 +129,3 @@
 
  history 200 > history.txt
 そのコマンドをエディタに出力
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
