@@ -1,0 +1,132 @@
+  425  node index.js 
+  node.jsで実行する
+
+  426  tsc index.ts 
+  インデックスファイルをコンパイル
+
+  427  tsc index.ts; node index.js 
+  コンパイルして実行する
+
+  456  --version
+  バージョン確認
+
+  641  git config --global color.ui true
+  642  git config -l
+  643  git config --help 
+  650  git config --global core.editor 'vim -c "set fenc=utf-8"'
+  651  git config --global color.diff auto\ngit config --global color.status auto\n
+  653  git config --global color.branch auto
+  654  #git config --global push.default simple\ngit config --global core.precomposeunicode true\ngit config --global core.quotepath false
+  672  git@github.com:yamamoto6/product.git
+  680  git --list
+  658  git config --global core.quotepath false
+  656  user.name=shunsuke yamamoto\nuser.email=shanbenjunjie@gmail.com
+  662  defaults write com.apple.Finder QuitMenuItem -bool no
+  664  defaults write com.apple.finder QuitMenuItem -bool YES
+  683  sh init.sh
+  690  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  715  homebrew
+  716  homebrew --version 
+  714  brew --repo homebrew / core
+
+  730  brew help
+  サブコマンドの一覧を表示
+
+  735  brew doctor
+  homebrewの環境を診断
+
+  819  brew install git
+  パッケージのインストール
+
+  754  brew upgrade git
+  インストール済みのパッケージを最新のものに更新する
+
+  763  brew list
+  インストール済みのパッケージの一覧を表示
+
+  736  /usr/local/Cellar/foo/0.1
+  739  defaults write com.apple.finder QuitMenuItem -bool NO
+  740  Killall Finder
+  741  s
+  747  echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshenv
+  748  echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshenva
+  750  git -version
+  752  source ~/.zshenv
+  765  git -C $（brew --repository homebrew / core）
+  766  git -C $（brew --repository homebrew / core）reset --hardHEAD
+  768  git -C $（brew --repository homebrew / core）checkout master
+  769  git -C $（brew --repository homebrew / core）checkoutmaster
+  770  cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
+  772  -1
+  776  git clone gh repo clone yamamoto6/product
+  783  git config --global user.email "shanbenjunjie@gmail.com"
+  785  git config --global user.name "shunsuke yamamoto"
+  787  git init\nInitialized empty Git repository in 作業ディレクトリ/.git
+  811  git config --list
+  817  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  823  mkdir program
+  ディレクトリの作成
+
+  855  git commit -m "初めてのコミット"
+  現在の状態をgitにセーブする
+
+  887  git@github.com:yamamoto6/program.git
+
+  889  git sattus
+  ワーキングディレクトリとインデックスのファイル修正などの状態を確認
+
+  903  echo "# program" >> README.md\ngit init\ngit add README.md\ngit commit -m "first commit"\ngit branch -M main\ngit remote add origin git@github.com:yamamoto6/program.git\ngit push -u origin main\n
+
+  909  git clone git@github.com:yamamoto6/program.git
+  リモートからローカルにリポジトリをクローンする
+
+  927  git push --set-upstream origin main 
+
+  938  git push
+  ローカルの内容をリモートにアップロード
+
+  946  git add .
+  変更された全てのファイルをステージングする
+
+  931  git remote add origin https://github.com/yamamoto6/product.git
+  リモートリポジトリにpushする前に登録するコマンドq
+
+  948  git status
+  ワーキングディレクトリの状況を確認
+
+  951  git log
+  コミット履歴をみる
+
+ 1024  git checkout feature/remove-line
+ ブランチを切り替える
+
+ 1025  git branch
+ ブランチの一覧をみる
+
+  984  cd ~/
+  ホームディレクトリに移動
+
+ 1013  cd ..
+ 一つ前のディレクトリに移動
+
+  989  code config
+
+  987  ls -la
+
+  990  ls
+  現在のディレクトリ内のフォルダを表示
+
+ 1005  pwd
+ 現在のディレクトリを表示
+
+ rm
+ ファイルを消去する
+
+ 1015  rm -rf projects
+
+ 1027  history 200
+ 200番以降の、過去に出力したコマンドを表示
+
+ history 200 > history.txt
+そのコマンドをエディタに出力
