@@ -1,8 +1,8 @@
-  425  node index.js 
-  node.jsで実行する
-
   426  tsc index.ts 
-  インデックスファイルをコンパイル
+  コンパイル
+
+  425  node index.js 
+  実行
 
   427  tsc index.ts; node index.js 
   コンパイルして実行する
@@ -13,7 +13,6 @@
   642  git config --list
   gitの設定内容の確認
 
-  643  git config --help 
   650  git config --global core.editor 'vim -c "set fenc=utf-8"'
 
   641  git config --global color.ui true
@@ -26,8 +25,7 @@
   git利用時のコマンドラインの色の設定
 
   654  #git config --global push.default simple\ngit config --global core.precomposeunicode true\ngit config --global core.quotepath false
-  672  git@github.com:yamamoto6/product.git
-  680  git --list
+
   658  git config --global core.quotepath false
   656  user.name=shunsuke yamamoto\nuser.email=shanbenjunjie@gmail.com
   683  sh init.sh
