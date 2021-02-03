@@ -1,36 +1,51 @@
-document.getElementById("button-0").onclick = function() {
-    document.getElementById("button-result").innerHTML = "0";
+const btns: string[] = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  // "+",
+  "c",
+];
+
+const calcArray: string[] = [];
+
+for (const item of btns) {
+  let elementId: string = item;
+  let value: string = item;
+  if (item === "c") {
+    value = "0";
+  }
+  const btnElement: HTMLElement = <HTMLElement>(
+    document.getElementById(`button-${elementId}`)
+  );
+  btnElement.onclick = () => {
+    calcArray.push(value);
+    document.getElementById("button-result").innerHTML = value;
+    console.log(JSON.stringify(calcArray));
+  };
+}
+
+// プラスボタン
+const btnPlus: HTMLElement = <HTMLElement>(
+  document.getElementById(`button-plus`)
+);
+btnPlus.onclick = () => {
+  calcArray.push("+");
+  document.getElementById("button-result").innerHTML = "+";
+  console.log(JSON.stringify(calcArray));
 };
-document.getElementById("button-1").onclick = function() {
-    document.getElementById("button-result").innerHTML = "1";
-};
-document.getElementById("button-2").onclick = function() {
-    document.getElementById("button-result").innerHTML = "2";
-};
-document.getElementById("button-3").onclick = function() {
-    document.getElementById("button-result").innerHTML = "3";
-};
-document.getElementById("button-4").onclick = function() {
-    document.getElementById("button-result").innerHTML = "4";
-};
-document.getElementById("button-5").onclick = function() {
-    document.getElementById("button-result").innerHTML = "5";
-};
-document.getElementById("button-6").onclick = function() {
-    document.getElementById("button-result").innerHTML = "6";
-};
-document.getElementById("button-7").onclick = function() {
-    document.getElementById("button-result").innerHTML = "7";
-};
-document.getElementById("button-8").onclick = function() {
-    document.getElementById("button-result").innerHTML = "8";
-};
-document.getElementById("button-9").onclick = function() {
-    document.getElementById("button-result").innerHTML = "9";
-};
-document.getElementById("button-+").onclick = function() {
-    document.getElementById("button-result").innerHTML = "+";
-};
-document.getElementById("button-c").onclick = function() {
-    document.getElementById("button-result").innerHTML = "0";
+
+// イコールボタン
+const btnEq: HTMLElement = <HTMLElement>document.getElementById(`button-eq`);
+btnEq.onclick = () => {
+  calcArray.push("=");
+  const reuslt = calcArray.join(" ");
+  document.getElementById("button-result").innerHTML = reuslt;
+  console.log(JSON.stringify(calcArray));
 };
