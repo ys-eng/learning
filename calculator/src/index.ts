@@ -9,8 +9,6 @@ const btns: string[] = [
   "7",
   "8",
   "9",
-  // "+",
-  "c",
 ];
 
 const calcArray: string[] = [];
@@ -21,9 +19,7 @@ for (const item of btns) {
   if (item === "c") {
     value = "0";
   }
-  const btnElement: HTMLElement = <HTMLElement>(
-    document.getElementById(`button-${elementId}`)
-  );
+  const btnElement: HTMLElement = <HTMLElement>document.getElementById(`button-${elementId}`);
   btnElement.onclick = () => {
     calcArray.push(value);
     document.getElementById("button-result").innerHTML = value;
@@ -32,11 +28,8 @@ for (const item of btns) {
 }
 
 // プラスボタン
-const btnPlus: HTMLElement = <HTMLElement>(
-  document.getElementById(`button-plus`)
-);
+const btnPlus: HTMLElement = <HTMLElement>document.getElementById(`button-plus`);
 btnPlus.onclick = () => {
-  calcArray.push("+");
   document.getElementById("button-result").innerHTML = "+";
   console.log(JSON.stringify(calcArray));
 };
@@ -44,8 +37,23 @@ btnPlus.onclick = () => {
 // イコールボタン
 const btnEq: HTMLElement = <HTMLElement>document.getElementById(`button-eq`);
 btnEq.onclick = () => {
-  calcArray.push("=");
-  const reuslt = calcArray.join(" ");
-  document.getElementById("button-result").innerHTML = reuslt;
+  let Array = calcArray => {
+    let num = calcArray.map(Number);
+    let sum = 0;
+    for(let i = 0; i < num.length; i++) {
+      sum += num[i];
+    }
+    return sum;
+  }
+  let str:string =String(Array(calcArray));
+   const result = str;
+  document.getElementById("button-result").innerHTML = result;
   console.log(JSON.stringify(calcArray));
 };
+
+const btnclear: HTMLElement = <HTMLElement>document.getElementById(`button-clear`);
+btnclear.onclick = () => {
+  document.getElementById("button-result").innerHTML = "0";
+  calcArray.splice(0);
+  console.log(JSON.stringify(calcArray));
+}

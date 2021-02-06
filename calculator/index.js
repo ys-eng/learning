@@ -9,8 +9,6 @@ var btns = [
     "7",
     "8",
     "9",
-    // "+",
-    "c",
 ];
 var calcArray = [];
 var _loop_1 = function (item) {
@@ -19,7 +17,7 @@ var _loop_1 = function (item) {
     if (item === "c") {
         value = "0";
     }
-    var btnElement = (document.getElementById("button-" + elementId));
+    var btnElement = document.getElementById("button-" + elementId);
     btnElement.onclick = function () {
         calcArray.push(value);
         document.getElementById("button-result").innerHTML = value;
@@ -31,17 +29,30 @@ for (var _i = 0, btns_1 = btns; _i < btns_1.length; _i++) {
     _loop_1(item);
 }
 // プラスボタン
-var btnPlus = (document.getElementById("button-plus"));
+var btnPlus = document.getElementById("button-plus");
 btnPlus.onclick = function () {
-    calcArray.push("+");
     document.getElementById("button-result").innerHTML = "+";
     console.log(JSON.stringify(calcArray));
 };
 // イコールボタン
 var btnEq = document.getElementById("button-eq");
 btnEq.onclick = function () {
-    calcArray.push("=");
-    var reuslt = calcArray.join(" ");
-    document.getElementById("button-result").innerHTML = reuslt;
+    var Array = function (calcArray) {
+        var num = calcArray.map(Number);
+        var sum = 0;
+        for (var i = 0; i < num.length; i++) {
+            sum += num[i];
+        }
+        return sum;
+    };
+    var str = String(Array(calcArray));
+    var result = str;
+    document.getElementById("button-result").innerHTML = result;
+    console.log(JSON.stringify(calcArray));
+};
+var btnclear = document.getElementById("button-clear");
+btnclear.onclick = function () {
+    document.getElementById("button-result").innerHTML = "0";
+    calcArray.splice(0);
     console.log(JSON.stringify(calcArray));
 };
