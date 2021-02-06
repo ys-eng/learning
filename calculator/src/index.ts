@@ -37,20 +37,21 @@ btnPlus.onclick = () => {
 // イコールボタン
 const btnEq: HTMLElement = <HTMLElement>document.getElementById(`button-eq`);
 btnEq.onclick = () => {
-  let Array = calcArray => {
-    let num = calcArray.map(Number);
-    let sum = 0;
+    function sum(calcArray): number {
+    let num: number[] = calcArray.map(Number);
+    let sum: number = 0;
     for(let i = 0; i < num.length; i++) {
       sum += num[i];
     }
     return sum;
   }
-  let str:string =String(Array(calcArray));
+  let str:string =String(sum(calcArray));
    const result = str;
   document.getElementById("button-result").innerHTML = result;
   console.log(JSON.stringify(calcArray));
 };
 
+// クリアボタン
 const btnclear: HTMLElement = <HTMLElement>document.getElementById(`button-clear`);
 btnclear.onclick = () => {
   document.getElementById("button-result").innerHTML = "0";

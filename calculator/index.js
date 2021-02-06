@@ -37,19 +37,21 @@ btnPlus.onclick = function () {
 // イコールボタン
 var btnEq = document.getElementById("button-eq");
 btnEq.onclick = function () {
-    var Array = function (calcArray) {
+    // let Array: any = calcArray => {
+    function sum(calcArray) {
         var num = calcArray.map(Number);
         var sum = 0;
         for (var i = 0; i < num.length; i++) {
             sum += num[i];
         }
         return sum;
-    };
-    var str = String(Array(calcArray));
+    }
+    var str = String(sum(calcArray));
     var result = str;
     document.getElementById("button-result").innerHTML = result;
     console.log(JSON.stringify(calcArray));
 };
+// クリアボタン
 var btnclear = document.getElementById("button-clear");
 btnclear.onclick = function () {
     document.getElementById("button-result").innerHTML = "0";
