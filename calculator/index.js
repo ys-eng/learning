@@ -37,7 +37,6 @@ btnPlus.onclick = function () {
 // イコールボタン
 var btnEq = document.getElementById("button-eq");
 btnEq.onclick = function () {
-    // let Array: any = calcArray => {
     function sum(calcArray) {
         var num = calcArray.map(Number);
         var sum = 0;
