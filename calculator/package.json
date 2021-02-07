@@ -1,0 +1,13 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "create-calculator",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc src/index.ts --outFile index.js"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
+}
