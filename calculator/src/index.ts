@@ -11,18 +11,13 @@ const btns: string[] = [
   "9",
 ];
 
-const calcArray: string[] = [];
+let calcArray: string[] = [];
 
-for (const item of btns) {
-  let elementId: string = item;
-  let value: string = item;
-  if (item === "c") {
-    value = "0";
-  }
+for (const elementId of btns) {
   const btnElement: HTMLElement = <HTMLElement>document.getElementById(`button-${elementId}`);
   btnElement.onclick = () => {
-    calcArray.push(value);
-    document.getElementById("button-result").innerHTML = value;
+    calcArray.push(elementId);
+    document.getElementById("button-result").innerHTML = elementId;
     console.log(JSON.stringify(calcArray));
   };
 }
@@ -38,15 +33,12 @@ btnPlus.onclick = () => {
 const btnEq: HTMLElement = <HTMLElement>document.getElementById(`button-eq`);
 btnEq.onclick = () => {
     function sum(calcArray): number {
-    let num: number[] = calcArray.map(Number);
+    const numArray: number[] = calcArray.map(Number);
     let sum: number = 0;
-    for(let i = 0; i < num.length; i++) {
-      sum += num[i];
-    }
+    sum = numArray.reduce((sum, val) => sum + val);
     return sum;
   }
-  let str:string =String(sum(calcArray));
-   const result = str;
+  const result: string = String(sum(calcArray)); 
   document.getElementById("button-result").innerHTML = result;
   console.log(JSON.stringify(calcArray));
 };
@@ -55,6 +47,6 @@ btnEq.onclick = () => {
 const btnclear: HTMLElement = <HTMLElement>document.getElementById(`button-clear`);
 btnclear.onclick = () => {
   document.getElementById("button-result").innerHTML = "0";
-  calcArray.splice(0);
+  calcArray = [];
   console.log(JSON.stringify(calcArray));
 }
