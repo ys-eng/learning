@@ -2,19 +2,19 @@ const btns: string[] = ["0","1","2","3","4","5","6","7","8","9","."];
 
 let calcArray: string[] = [];
 let totalArray: string[] = [];
-let judgment: string = "";
+let check: string = "";
 
 for (const elementId of btns) {
   const btnElement: HTMLElement = <HTMLElement>document.getElementById(`button-${elementId}`);
   btnElement.onclick = () => {
-    if(judgment === "calcEnd") {
-      judgment = "error";
-      document.getElementById("button-result").innerHTML = judgment;
-    } else if(judgment === "error") {
-      document.getElementById("button-result").innerHTML = judgment;
+    if(check === "calcEnd") {
+      check = "error";
+      document.getElementById("button-result").innerHTML = check;
+    } else if(check === "error") {
+      document.getElementById("button-result").innerHTML = check;
     } else {
       calcArray.push(elementId);
-      document.getElementById("button-result").innerHTML =  calcArray.join("");
+      document.getElementById("button-result").innerHTML = calcArray.join("");
     }
   };
 }
@@ -22,10 +22,10 @@ for (const elementId of btns) {
 // プラスボタン
 const btnPlus: HTMLElement = <HTMLElement>document.getElementById(`button-plus`);
 btnPlus.onclick = () => {
-  if(judgment === "error") {
-    document.getElementById("button-result").innerHTML = judgment;
-  } else if(judgment !== "error"){
-    judgment = "plus";
+  if(check === "error") {
+    document.getElementById("button-result").innerHTML = check;
+  } else if(check !== "error"){
+    check = "plus";
     document.getElementById("button-result").innerHTML = "+";
     totalArray.push(calcArray.join(""));
     calcArray = [];
@@ -35,23 +35,18 @@ btnPlus.onclick = () => {
 // イコールボタン
 const btnEq: HTMLElement = <HTMLElement>document.getElementById(`button-eq`);
 btnEq.onclick = () => {
-  if(judgment === "calcEnd") {
-    judgment = "error";
-    document.getElementById("button-result").innerHTML = judgment;
-  } else if(judgment === "error") {
-    document.getElementById("button-result").innerHTML = judgment;
+  if(check === "calcEnd") {
+    check = "error";
+    document.getElementById("button-result").innerHTML = check;
+  } else if(check === "error") {
+    document.getElementById("button-result").innerHTML = check;
   } else {
     totalArray.push(calcArray.join(""));
     calcArray = [];
-    function sum(totalArray): number {
-      const numArray: number[] = totalArray.map(Number);
-      let sum: number = 0;
-      sum = numArray.reduce((sum, val) => sum + val);
-      return sum;
-    }
+    const sum = (totalArray): number => totalArray.map(Number).reduce((sum, val) => sum + val);
     const result: string = String(sum(totalArray)); 
     document.getElementById("button-result").innerHTML = result;
-    judgment = "calcEnd";
+    check = "calcEnd";
   }
 };
 
@@ -61,5 +56,5 @@ btnclear.onclick = () => {
   document.getElementById("button-result").innerHTML = "0";
   calcArray = [];
   totalArray = [];
-  judgment = "";
+  check = "";
 }
