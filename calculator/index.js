@@ -2,14 +2,20 @@ var btns = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
 var calcArray = [];
 var totalArray = [];
 var check = "";
+var calcStatus;
+(function (calcStatus) {
+    calcStatus["calcEnd"] = "calcEnd";
+    calcStatus["error"] = "error";
+    calcStatus["plus"] = "plus";
+})(calcStatus || (calcStatus = {}));
 var _loop_1 = function (elementId) {
     var btnElement = document.getElementById("button-" + elementId);
     btnElement.onclick = function () {
-        if (check === "calcEnd") {
-            check = "error";
+        if (check === calcStatus.calcEnd) {
+            check = calcStatus.error;
             document.getElementById("button-result").innerHTML = check;
         }
-        else if (check === "error") {
+        else if (check === calcStatus.error) {
             document.getElementById("button-result").innerHTML = check;
         }
         else {
@@ -25,10 +31,10 @@ for (var _i = 0, btns_1 = btns; _i < btns_1.length; _i++) {
 // プラスボタン
 var btnPlus = document.getElementById("button-plus");
 btnPlus.onclick = function () {
-    if (check === "error") {
+    if (check === calcStatus.error) {
         document.getElementById("button-result").innerHTML = check;
     }
-    else if (check !== "error") {
+    else {
         check = "plus";
         document.getElementById("button-result").innerHTML = "+";
         totalArray.push(calcArray.join(""));
@@ -38,11 +44,11 @@ btnPlus.onclick = function () {
 // イコールボタン
 var btnEq = document.getElementById("button-eq");
 btnEq.onclick = function () {
-    if (check === "calcEnd") {
-        check = "error";
+    if (check === calcStatus.calcEnd) {
+        check = calcStatus.error;
         document.getElementById("button-result").innerHTML = check;
     }
-    else if (check === "error") {
+    else if (check === calcStatus.error) {
         document.getElementById("button-result").innerHTML = check;
     }
     else {
@@ -51,7 +57,7 @@ btnEq.onclick = function () {
         var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum + val; }); };
         var result = String(sum(totalArray));
         document.getElementById("button-result").innerHTML = result;
-        check = "calcEnd";
+        check = calcStatus.calcEnd;
     }
 };
 // クリアボタン

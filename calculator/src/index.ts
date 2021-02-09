@@ -2,15 +2,20 @@ const btns: string[] = ["0","1","2","3","4","5","6","7","8","9","."];
 
 let calcArray: string[] = [];
 let totalArray: string[] = [];
-let check: string = "";
+let check: "" | "calcEnd" | "error" | "plus" = "";
+enum calcStatus {
+  calcEnd = "calcEnd",
+  error = "error",
+  plus = "plus",
+}
 
 for (const elementId of btns) {
   const btnElement: HTMLElement = <HTMLElement>document.getElementById(`button-${elementId}`);
   btnElement.onclick = () => {
-    if(check === "calcEnd") {
-      check = "error";
+    if(check === calcStatus.calcEnd) {
+      check = calcStatus.error;
       document.getElementById("button-result").innerHTML = check;
-    } else if(check === "error") {
+    } else if(check === calcStatus.error) {
       document.getElementById("button-result").innerHTML = check;
     } else {
       calcArray.push(elementId);
@@ -22,9 +27,9 @@ for (const elementId of btns) {
 // プラスボタン
 const btnPlus: HTMLElement = <HTMLElement>document.getElementById(`button-plus`);
 btnPlus.onclick = () => {
-  if(check === "error") {
+  if(check === calcStatus.error) {
     document.getElementById("button-result").innerHTML = check;
-  } else if(check !== "error"){
+  } else {
     check = "plus";
     document.getElementById("button-result").innerHTML = "+";
     totalArray.push(calcArray.join(""));
@@ -35,10 +40,10 @@ btnPlus.onclick = () => {
 // イコールボタン
 const btnEq: HTMLElement = <HTMLElement>document.getElementById(`button-eq`);
 btnEq.onclick = () => {
-  if(check === "calcEnd") {
-    check = "error";
+  if(check === calcStatus.calcEnd) {
+    check = calcStatus.error;
     document.getElementById("button-result").innerHTML = check;
-  } else if(check === "error") {
+  } else if(check === calcStatus.error) {
     document.getElementById("button-result").innerHTML = check;
   } else {
     totalArray.push(calcArray.join(""));
@@ -46,7 +51,7 @@ btnEq.onclick = () => {
     const sum = (totalArray): number => totalArray.map(Number).reduce((sum, val) => sum + val);
     const result: string = String(sum(totalArray)); 
     document.getElementById("button-result").innerHTML = result;
-    check = "calcEnd";
+    check = calcStatus.calcEnd;
   }
 };
 
