@@ -11,11 +11,8 @@ var calcStatus;
 var _loop_1 = function (elementId) {
     var btnElement = document.getElementById("button-" + elementId);
     btnElement.onclick = function () {
-        if (check === calcStatus.calcEnd) {
+        if (check === calcStatus.calcEnd || check === calcStatus.error) {
             check = calcStatus.error;
-            document.getElementById("button-result").innerHTML = check;
-        }
-        else if (check === calcStatus.error) {
             document.getElementById("button-result").innerHTML = check;
         }
         else {
@@ -44,11 +41,8 @@ btnPlus.onclick = function () {
 // イコールボタン
 var btnEq = document.getElementById("button-eq");
 btnEq.onclick = function () {
-    if (check === calcStatus.calcEnd) {
+    if (check === calcStatus.calcEnd || check === calcStatus.error) {
         check = calcStatus.error;
-        document.getElementById("button-result").innerHTML = check;
-    }
-    else if (check === calcStatus.error) {
         document.getElementById("button-result").innerHTML = check;
     }
     else {

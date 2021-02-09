@@ -12,10 +12,8 @@ enum calcStatus {
 for (const elementId of btns) {
   const btnElement: HTMLElement = <HTMLElement>document.getElementById(`button-${elementId}`);
   btnElement.onclick = () => {
-    if(check === calcStatus.calcEnd) {
+    if(check === calcStatus.calcEnd || check === calcStatus.error) {
       check = calcStatus.error;
-      document.getElementById("button-result").innerHTML = check;
-    } else if(check === calcStatus.error) {
       document.getElementById("button-result").innerHTML = check;
     } else {
       calcArray.push(elementId);
@@ -40,10 +38,8 @@ btnPlus.onclick = () => {
 // イコールボタン
 const btnEq: HTMLElement = <HTMLElement>document.getElementById(`button-eq`);
 btnEq.onclick = () => {
-  if(check === calcStatus.calcEnd) {
+  if(check === calcStatus.calcEnd || check === calcStatus.error) {
     check = calcStatus.error;
-    document.getElementById("button-result").innerHTML = check;
-  } else if(check === calcStatus.error) {
     document.getElementById("button-result").innerHTML = check;
   } else {
     totalArray.push(calcArray.join(""));
