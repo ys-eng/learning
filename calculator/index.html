@@ -14,52 +14,80 @@
       width: 350px;
       margin: 200px auto 0;
       padding: 30px;
-      background-color: #333;
+      background-color: #000;
     }
     .calculator-button {
-      background-color: #ddd;
+      background-color: #444;
+      color: #fff;
       text-align: center;
       line-height: 80px;
-      font-size: 30px;
+      font-size: 40px;
       cursor: pointer;
+      border-radius: 50%;
+      transition: .1s;
     }
-    #button-result {
-        background-color: #ddd;
+    .calculator-button:hover {
+      background-color: #777;
+    }
+    .button-result {
+        background-color: #000;
+        color: #fff;
+        font-size: 50px;
         grid-column: 1/5;
         grid-row: 1/2;
         margin-bottom: 20px;
         padding-right: 10px;
         text-align: right;
+        line-height: 100px;
+        border-radius: 0;
     }
-    #button-0 {
+    .button-result:hover {
+      background-color: #000;
+    }
+    .button-0 {
       grid-column: 1/3;
       grid-row: 6/7;
+      border-radius: 40px;
+    }
+    .button-divide, .button-multiply, .button-minus, .button-plus, .button-eq {
+      background-color: #ffa500;
+    }
+    .button-divide:hover, .button-multiply:hover, .button-minus:hover, .button-plus:hover, .button-eq:hover {
+      background-color: #ffc560;
+    }
+    .button-clear, .button-plus-minus, .button-p {
+      background-color: #bbb;
+      color: #000;
+    }
+    .button-clear:hover, .button-plus-minus:hover, .button-p:hover {
+      background-color: #eee;
     }
   </style>
 </head>
 <body>
   <div class="calculator">
-    <div class="calculator-button" id="button-result">0</div>
-    <div class="calculator-button" id="button-clear">C</div>
-    <div class="calculator-button" id="button-">+/-</div>
-    <div class="calculator-button" id="button-%">%</div>
-    <div class="calculator-button" id="button-÷">÷</div>
-    <div class="calculator-button" id="button-7">7</div>
-    <div class="calculator-button" id="button-8">8</div>
-    <div class="calculator-button" id="button-9">9</div>
-    <div class="calculator-button" id="button-×">×</div>
-    <div class="calculator-button" id="button-4">4</div>
-    <div class="calculator-button" id="button-5">5</div>
-    <div class="calculator-button" id="button-6">6</div>
-    <div class="calculator-button" id="button--">-</div>
-    <div class="calculator-button" id="button-1">1</div>
-    <div class="calculator-button" id="button-2">2</div>
-    <div class="calculator-button" id="button-3">3</div>
-    <div class="calculator-button" id="button-plus">+</div>
-    <div class="calculator-button" id="button-0">0</div>
-    <div class="calculator-button" id="button-.">.</div>
-    <div class="calculator-button" id="button-eq">=</div>
+    <div class="calculator-button button-result" id="button-result">0</div>
+    <div class="calculator-button button-clear" id="button-clear">C</div>
+    <div class="calculator-button button-plus-minus" id="button-plus-minus">+/-</div>
+    <div class="calculator-button button-p" id="button-p">%</div>
+    <div class="calculator-button button-divide" id="button-divide">÷</div>
+    <div class="calculator-button button-7" id="button-7">7</div>
+    <div class="calculator-button button-8" id="button-8">8</div>
+    <div class="calculator-button button-9" id="button-9">9</div>
+    <div class="calculator-button button-multiply" id="button-multiply">×</div>
+    <div class="calculator-button button-4" id="button-4">4</div>
+    <div class="calculator-button button-5" id="button-5">5</div>
+    <div class="calculator-button button-6" id="button-6">6</div>
+    <div class="calculator-button button-minus" id="button-minus">−</div>
+    <div class="calculator-button button-1" id="button-1">1</div>
+    <div class="calculator-button button-2" id="button-2">2</div>
+    <div class="calculator-button button-3" id="button-3">3</div>
+    <div class="calculator-button button-plus" id="button-plus">＋</div>
+    <div class="calculator-button button-0" id="button-0">0</div>
+    <div class="calculator-button button-." id="button-.">.</div>
+    <div class="calculator-button button-eq" id="button-eq">=</div>
   </div>
-  <script src="index.js"></script>
+  <script src="index.js">
+  </script>
 </body>
 </html>
