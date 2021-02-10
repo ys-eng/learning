@@ -61,6 +61,8 @@ btnEq.onclick = function () {
         var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum + val; }); };
         var result = String(sum(totalArray));
         document.getElementById("button-result").innerHTML = result;
+        totalArray = [];
+        totalArray.push(result);
         check = calcStatus.calcEnd;
     }
     else if (check === calcStatus.minus) {
@@ -69,6 +71,8 @@ btnEq.onclick = function () {
         var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum - val; }); };
         var result = String(sum(totalArray));
         document.getElementById("button-result").innerHTML = result;
+        totalArray = [];
+        totalArray.push(result);
         check = calcStatus.calcEnd;
     }
     else if (check === calcStatus.multiply) {

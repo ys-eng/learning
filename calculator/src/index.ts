@@ -53,6 +53,8 @@ btnEq.onclick = () => {
     const sum = (totalArray): number => totalArray.map(Number).reduce((sum, val) => sum + val);
     const result: string = String(sum(totalArray)); 
     document.getElementById("button-result").innerHTML = result;
+    totalArray = [];
+    totalArray.push(result);
     check = calcStatus.calcEnd;
   } else if(check === calcStatus.minus) {
     totalArray.push(calcArray.join(""));
@@ -60,6 +62,8 @@ btnEq.onclick = () => {
     const sum = (totalArray): number => totalArray.map(Number).reduce((sum, val) => sum - val);
     const result: string = String(sum(totalArray)); 
     document.getElementById("button-result").innerHTML = result;
+    totalArray = [];
+    totalArray.push(result);
     check = calcStatus.calcEnd;
   } else if(check === calcStatus.multiply) {
     totalArray.push(calcArray.join(""));
@@ -67,6 +71,8 @@ btnEq.onclick = () => {
     const sum = (totalArray): number => totalArray.map(Number).reduce((sum, val) => sum * val);
     const result: string = String(sum(totalArray)); 
     document.getElementById("button-result").innerHTML = result;
+    totalArray = [];
+    totalArray.push(result);
     check = calcStatus.calcEnd;
   } else if(check === calcStatus.divide) {
     totalArray.push(calcArray.join(""));
@@ -74,6 +80,8 @@ btnEq.onclick = () => {
     const sum = (totalArray): number => totalArray.map(Number).reduce((sum, val) => sum / val);
     const result: string = String(sum(totalArray)); 
     document.getElementById("button-result").innerHTML = result;
+    totalArray = [];
+    totalArray.push(result);
     check = calcStatus.calcEnd;
   } else {
     check = calcStatus.error;
