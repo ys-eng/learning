@@ -37,7 +37,7 @@ const operatorArray: string[] = ["plus", "minus", "multiply", "divide"];
   btnOperator.onclick = () => {
     if(check === calcStatus.error) {
       document.getElementById("button-result").innerHTML = check;
-    }else {
+    } else {
       check = calcStatus.plus;
       totalArray.push(calcArray.join(""));
       calcArray = [];
@@ -47,16 +47,37 @@ const operatorArray: string[] = ["plus", "minus", "multiply", "divide"];
 // イコールボタン
 const btnEq: HTMLElement = <HTMLElement>document.getElementById(`button-eq`);
 btnEq.onclick = () => {
-  if(check === calcStatus.calcEnd || check === calcStatus.error) {
-    check = calcStatus.error;
-    document.getElementById("button-result").innerHTML = check;
-  } else {
+  if(check === calcStatus.plus) {
     totalArray.push(calcArray.join(""));
     calcArray = [];
     const sum = (totalArray): number => totalArray.map(Number).reduce((sum, val) => sum + val);
     const result: string = String(sum(totalArray)); 
     document.getElementById("button-result").innerHTML = result;
     check = calcStatus.calcEnd;
+  } else if(check === calcStatus.minus) {
+    totalArray.push(calcArray.join(""));
+    calcArray = [];
+    const sum = (totalArray): number => totalArray.map(Number).reduce((sum, val) => sum - val);
+    const result: string = String(sum(totalArray)); 
+    document.getElementById("button-result").innerHTML = result;
+    check = calcStatus.calcEnd;
+  } else if(check === calcStatus.multiply) {
+    totalArray.push(calcArray.join(""));
+    calcArray = [];
+    const sum = (totalArray): number => totalArray.map(Number).reduce((sum, val) => sum * val);
+    const result: string = String(sum(totalArray)); 
+    document.getElementById("button-result").innerHTML = result;
+    check = calcStatus.calcEnd;
+  } else if(check === calcStatus.divide) {
+    totalArray.push(calcArray.join(""));
+    calcArray = [];
+    const sum = (totalArray): number => totalArray.map(Number).reduce((sum, val) => sum / val);
+    const result: string = String(sum(totalArray)); 
+    document.getElementById("button-result").innerHTML = result;
+    check = calcStatus.calcEnd;
+  } else {
+    check = calcStatus.error;
+    document.getElementById("button-result").innerHTML = check;
   }
 };
 

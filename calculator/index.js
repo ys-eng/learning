@@ -43,7 +43,7 @@ for (var _a = 0, operatorArray_1 = operatorArray; _a < operatorArray_1.length; _
             document.getElementById("button-result").innerHTML = check;
         }
         else {
-            check = calcStatus.plus;
+            check = calcStatus.multiply;
             totalArray.push(calcArray.join(""));
             calcArray = [];
         }
@@ -56,7 +56,7 @@ btnEq.onclick = function () {
         check = calcStatus.error;
         document.getElementById("button-result").innerHTML = check;
     }
-    else {
+    else if (check === calcStatus.plus) {
         totalArray.push(calcArray.join(""));
         calcArray = [];
         var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum + val; }); };
@@ -64,6 +64,33 @@ btnEq.onclick = function () {
         document.getElementById("button-result").innerHTML = result;
         check = calcStatus.calcEnd;
     }
+    else if (check === calcStatus.minus) {
+        totalArray.push(calcArray.join(""));
+        calcArray = [];
+        var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum - val; }); };
+        var result = String(sum(totalArray));
+        document.getElementById("button-result").innerHTML = result;
+        check = calcStatus.calcEnd;
+    }
+    else if (check === calcStatus.multiply) {
+        totalArray.push(calcArray.join(""));
+        calcArray = [];
+        var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum - val; }); };
+        var result = String(sum(totalArray));
+        document.getElementById("button-result").innerHTML = result;
+        check = calcStatus.calcEnd;
+    }
+    else
+        (check === calcStatus.divide);
+    {
+        totalArray.push(calcArray.join(""));
+        calcArray = [];
+        var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum - val; }); };
+        var result = String(sum(totalArray));
+        document.getElementById("button-result").innerHTML = result;
+        check = calcStatus.calcEnd;
+    }
+    ;
 };
 // クリアボタン
 var btnclear = document.getElementById("button-clear");
