@@ -1,4 +1,5 @@
 var btns = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "dot"];
+var operatorArray = ["plus", "minus", "multiply", "divide"];
 var calcArray = [];
 var totalArray = [];
 var check = "";
@@ -33,13 +34,15 @@ for (var _i = 0, btns_1 = btns; _i < btns_1.length; _i++) {
     var elementId = btns_1[_i];
     _loop_1(elementId);
 }
-// 演算子ボタン
-var operatorArray = ["plus", "minus", "multiply", "divide"];
 var _loop_2 = function (operator) {
     var btnOperator = document.getElementById("button-" + operator);
     btnOperator.onclick = function () {
         if (check === calcStatus.error) {
             document.getElementById("button-result").innerHTML = check;
+        }
+        else if (check === calcStatus.calcEnd) {
+            check = operator;
+            calcArray = [];
         }
         else {
             check = operator;
@@ -48,53 +51,38 @@ var _loop_2 = function (operator) {
         }
     };
 };
+// 演算子ボタン
 for (var _a = 0, operatorArray_1 = operatorArray; _a < operatorArray_1.length; _a++) {
     var operator = operatorArray_1[_a];
     _loop_2(operator);
 }
 // イコールボタン
+var total = "";
 var btnEq = document.getElementById("button-eq");
 btnEq.onclick = function () {
+    totalArray.push(calcArray.join(""));
+    calcArray = [];
     if (check === calcStatus.plus) {
-        totalArray.push(calcArray.join(""));
-        calcArray = [];
         var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum + val; }); };
-        var result = String(sum(totalArray));
-        document.getElementById("button-result").innerHTML = result;
-        totalArray = [];
-        totalArray.push(result);
-        check = calcStatus.calcEnd;
+        total = sum(totalArray);
     }
-    else if (check === calcStatus.minus) {
-        totalArray.push(calcArray.join(""));
-        calcArray = [];
+    if (check === calcStatus.minus) {
         var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum - val; }); };
-        var result = String(sum(totalArray));
-        document.getElementById("button-result").innerHTML = result;
-        totalArray = [];
-        totalArray.push(result);
-        check = calcStatus.calcEnd;
+        total = sum(totalArray);
     }
-    else if (check === calcStatus.multiply) {
-        totalArray.push(calcArray.join(""));
-        calcArray = [];
+    if (check === calcStatus.multiply) {
         var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum * val; }); };
-        var result = String(sum(totalArray));
-        document.getElementById("button-result").innerHTML = result;
-        check = calcStatus.calcEnd;
+        total = sum(totalArray);
     }
-    else if (check === calcStatus.divide) {
-        totalArray.push(calcArray.join(""));
-        calcArray = [];
+    if (check === calcStatus.divide) {
         var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum / val; }); };
-        var result = String(sum(totalArray));
-        document.getElementById("button-result").innerHTML = result;
-        check = calcStatus.calcEnd;
+        total = sum(totalArray);
     }
-    else {
-        check = calcStatus.error;
-        document.getElementById("button-result").innerHTML = check;
-    }
+    var result = total;
+    document.getElementById("button-result").innerHTML = result;
+    totalArray = [];
+    totalArray.push(result);
+    check = calcStatus.calcEnd;
 };
 // クリアボタン
 var btnclear = document.getElementById("button-clear");
