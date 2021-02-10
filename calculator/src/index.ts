@@ -1,10 +1,22 @@
-const btns: string[] = ["0","1","2","3","4","5","6","7","8","9","dot"];
+const btns: string[] = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "dot",
+];
 const operatorArray: string[] = ["plus", "minus", "multiply", "divide"];
 
 let calcArray: string[] = [];
 let totalArray: string[] = [];
 let check: string = "";
-enum calcStatus {
+enum CalcStatus {
   empty = "",
   calcEnd = "calcEnd",
   error = "error",
@@ -16,13 +28,15 @@ enum calcStatus {
 
 for (const elementId of btns) {
   let value: string = elementId;
-  if(value === "dot") {
-    value = "."
+  if (value === "dot") {
+    value = ".";
   }
-  const btnElement: HTMLElement = <HTMLElement>document.getElementById(`button-${elementId}`);
+  const btnElement: HTMLElement = <HTMLElement>(
+    document.getElementById(`button-${elementId}`)
+  );
   btnElement.onclick = () => {
-    if(check === calcStatus.calcEnd || check === calcStatus.error) {
-      check = calcStatus.error;
+    if (check === CalcStatus.calcEnd || check === CalcStatus.error) {
+      check = CalcStatus.error;
       document.getElementById("button-result").innerHTML = check;
     } else {
       calcArray.push(value);
@@ -32,12 +46,14 @@ for (const elementId of btns) {
 }
 
 // 演算子ボタン
-  for (const operator of operatorArray) {
-  const btnOperator: HTMLElement = <HTMLElement>document.getElementById(`button-${operator}`);
+for (const operator of operatorArray) {
+  const btnOperator: HTMLElement = <HTMLElement>(
+    document.getElementById(`button-${operator}`)
+  );
   btnOperator.onclick = () => {
-    if(check === calcStatus.error) {
+    if (check === CalcStatus.error) {
       document.getElementById("button-result").innerHTML = check;
-    } else if(check === calcStatus.calcEnd) {
+    } else if (check === CalcStatus.calcEnd) {
       check = operator;
       calcArray = [];
     } else {
@@ -53,34 +69,34 @@ const btnEq: HTMLElement = <HTMLElement>document.getElementById(`button-eq`);
 btnEq.onclick = () => {
   totalArray.push(calcArray.join(""));
   calcArray = [];
-  if(check === calcStatus.plus){
-    const sum = (totalArray): string => totalArray.map(Number).reduce((sum, val) => sum + val);
-    total = sum(totalArray);
-  }
-  if(check === calcStatus.minus){
-    const sum = (totalArray): string => totalArray.map(Number).reduce((sum, val) => sum - val);
-    total = sum(totalArray);
-  }
-  if(check === calcStatus.multiply){
-    const sum = (totalArray): string => totalArray.map(Number).reduce((sum, val) => sum * val);
-    total = sum(totalArray);
-  }
-  if(check === calcStatus.divide){
-    const sum = (totalArray): string => totalArray.map(Number).reduce((sum, val) => sum / val);
-    total = sum(totalArray);
-  }
-  const result: string = total; 
+  const result: string = sum(totalArray, check);
   document.getElementById("button-result").innerHTML = result;
   totalArray = [];
   totalArray.push(result);
-  check = calcStatus.calcEnd;
+  check = CalcStatus.calcEnd;
+};
+
+const sum = (totalArray: string[], calcStatus: string): string => {
+  let func;
+  if (calcStatus === CalcStatus.plus) {
+    func = (sum, val) => sum + val;
+  } else if (calcStatus === CalcStatus.minus) {
+    func = (sum, val) => sum - val;
+  } else if (calcStatus === CalcStatus.multiply) {
+    func = (sum, val) => sum * val;
+  } else if (calcStatus === CalcStatus.multiply) {
+    func = (sum, val) => sum * val;
+  }
+  return String(totalArray.map(Number).reduce(func));
 };
 
 // クリアボタン
-const btnclear: HTMLElement = <HTMLElement>document.getElementById(`button-clear`);
+const btnclear: HTMLElement = <HTMLElement>(
+  document.getElementById(`button-clear`)
+);
 btnclear.onclick = () => {
   document.getElementById("button-result").innerHTML = "0";
   calcArray = [];
   totalArray = [];
-  check = calcStatus.empty;
-}
+  check = CalcStatus.empty;
+};
