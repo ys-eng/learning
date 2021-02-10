@@ -35,28 +35,27 @@ for (var _i = 0, btns_1 = btns; _i < btns_1.length; _i++) {
 }
 // 演算子ボタン
 var operatorArray = ["plus", "minus", "multiply", "divide"];
-for (var _a = 0, operatorArray_1 = operatorArray; _a < operatorArray_1.length; _a++) {
-    var operator = operatorArray_1[_a];
+var _loop_2 = function (operator) {
     var btnOperator = document.getElementById("button-" + operator);
     btnOperator.onclick = function () {
         if (check === calcStatus.error) {
             document.getElementById("button-result").innerHTML = check;
         }
         else {
-            check = calcStatus.multiply;
+            check = operator;
             totalArray.push(calcArray.join(""));
             calcArray = [];
         }
     };
+};
+for (var _a = 0, operatorArray_1 = operatorArray; _a < operatorArray_1.length; _a++) {
+    var operator = operatorArray_1[_a];
+    _loop_2(operator);
 }
 // イコールボタン
 var btnEq = document.getElementById("button-eq");
 btnEq.onclick = function () {
-    if (check === calcStatus.calcEnd || check === calcStatus.error) {
-        check = calcStatus.error;
-        document.getElementById("button-result").innerHTML = check;
-    }
-    else if (check === calcStatus.plus) {
+    if (check === calcStatus.plus) {
         totalArray.push(calcArray.join(""));
         calcArray = [];
         var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum + val; }); };
@@ -75,22 +74,23 @@ btnEq.onclick = function () {
     else if (check === calcStatus.multiply) {
         totalArray.push(calcArray.join(""));
         calcArray = [];
-        var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum - val; }); };
+        var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum * val; }); };
         var result = String(sum(totalArray));
         document.getElementById("button-result").innerHTML = result;
         check = calcStatus.calcEnd;
     }
-    else
-        (check === calcStatus.divide);
-    {
+    else if (check === calcStatus.divide) {
         totalArray.push(calcArray.join(""));
         calcArray = [];
-        var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum - val; }); };
+        var sum = function (totalArray) { return totalArray.map(Number).reduce(function (sum, val) { return sum / val; }); };
         var result = String(sum(totalArray));
         document.getElementById("button-result").innerHTML = result;
         check = calcStatus.calcEnd;
     }
-    ;
+    else {
+        check = calcStatus.error;
+        document.getElementById("button-result").innerHTML = check;
+    }
 };
 // クリアボタン
 var btnclear = document.getElementById("button-clear");

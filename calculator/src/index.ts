@@ -2,7 +2,7 @@ const btns: string[] = ["0","1","2","3","4","5","6","7","8","9","dot"];
 
 let calcArray: string[] = [];
 let totalArray: string[] = [];
-let check: "" | "calcEnd" | "error" | "plus" | "minus" | "multiply" | "divide" = "";
+let check: string = "";
 enum calcStatus {
   empty = "",
   calcEnd = "calcEnd",
@@ -38,7 +38,7 @@ const operatorArray: string[] = ["plus", "minus", "multiply", "divide"];
     if(check === calcStatus.error) {
       document.getElementById("button-result").innerHTML = check;
     } else {
-      check = calcStatus.plus;
+      check = operator;
       totalArray.push(calcArray.join(""));
       calcArray = [];
     }
