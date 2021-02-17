@@ -4,13 +4,17 @@ const hourHand: HTMLElement = <HTMLElement>document.getElementById("hour");
 const minuteHand: HTMLElement = <HTMLElement>document.getElementById("minute");
 const secondeHand: HTMLElement = <HTMLElement>document.getElementById("second");
 
-setInterval(() => {
-  const now: Moment = moment();
+const intervalId = setInterval(() => {
+  const now = moment();
   const hour: number = now.hours();
   const minute: number = now.minutes();
   const second: number = now.seconds();
+  const millisecond: number = now.milliseconds();
 
-  hourHand.style.transform = `rotate(${hour * 30 + minute / 2}deg)`;
-  minuteHand.style.transform = `rotate(${minute * 6 + second / 10}deg)`;
-  secondeHand.style.transform = `rotate(${second * 6}deg)`;
-},1000);
+  // 時針は1時間で360/12度、1分間で360/12/60度、1秒間で360/12/60/60度動く
+  hourHand.style.transform = `rotate(${hour * 30 / 12 + minute * 360 / 12 / 60}deg)`;
+  // 分針は1時間で360度、1分間で360/60度、1秒間で360/60/60度動く
+  minuteHand.style.transform = `rotate(${minute * 6 + second * 360 / 60 / 60}deg)`;
+  // 秒針は1分間で360度、1秒間で360/60度動く、1ミリ秒で360/60/1000度動く
+  secondeHand.style.transform = `rotate(${second * 6 + millisecond * 360 / 60 / 1000}deg)`;
+},10)
