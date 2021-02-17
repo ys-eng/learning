@@ -1,15 +1,16 @@
-import moment from "moment";
+import moment, { Moment } from "moment";
+
+const hourHand: HTMLElement = <HTMLElement>document.getElementById("hour");
+const minuteHand: HTMLElement = <HTMLElement>document.getElementById("minute");
+const secondeHand: HTMLElement = <HTMLElement>document.getElementById("second");
 
 setInterval(() => {
-  const H: number = Number(moment().format("h"));
-  const M: number = Number(moment().format("mm"));
-  const S: number = Number(moment().format("ss"));
+  const now: Moment = moment();
+  const hour: number = now.hours();
+  const minute: number = now.minutes();
+  const second: number = now.seconds();
 
-  const Hour: HTMLElement = <HTMLElement>document.getElementById("hour");
-  const Minute: HTMLElement = <HTMLElement>document.getElementById("minute");
-  const Second: HTMLElement = <HTMLElement>document.getElementById("second");
-
-  Hour.style.transform = `rotate(${H*30+M/2}deg)`;
-  Minute.style.transform = `rotate(${M*6+S/10}deg)`;
-  Second.style.transform = `rotate(${S*6}deg)`;
-});
+  hourHand.style.transform = `rotate(${hour * 30 + minute / 2}deg)`;
+  minuteHand.style.transform = `rotate(${minute * 6 + second / 10}deg)`;
+  secondeHand.style.transform = `rotate(${second * 6}deg)`;
+},1000);
